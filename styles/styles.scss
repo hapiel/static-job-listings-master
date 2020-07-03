@@ -1,0 +1,214 @@
+$bgColor: #F0FAFB;
+$bgHeader: #5DA5A4;
+$dark: #5DA5A4;
+$tag: hsl(180, 31%, 95%);
+$gray: hsl(180, 8%, 52%);
+$shadow: #d0dadb;
+$tagRadius: 5px;
+
+%rounded-button {
+  border-radius: 500px;
+  color: white;
+  margin: 0 0.3em;
+  padding: 0.6em 0.8em 0.3em;
+  line-height: 2.3
+
+}
+
+%item {
+  box-shadow: 2px 5px 15px -3px $shadow;
+  //box-shadow: 2px 5px 15px 4px red;
+  margin: 1em 0;
+  padding: 1em;
+  display: grid;
+  background: white;
+  border-radius: 8px;
+}
+
+%tag {
+  font-weight: bold;
+  line-height: 2.9em;
+  margin: 0 0.3em;
+  padding: 0.5em 0.6em 0.3em;
+  background: $tag;
+  color: $dark;
+}
+
+body {
+  background: $bgColor;
+  font-family: 'Spartan', sans-serif;
+  margin: 0;
+}
+
+h1 {
+  font-size: 20px;
+  margin-top: 0.2em;
+}
+
+hr {
+  display: none;
+}
+
+.clear{
+  text-align: right;
+  align-self: center;
+  margin: 0 1em;
+  color: $dark;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.container {
+  margin: 0 15%;
+  position: relative;
+  bottom: 4em;
+}
+
+.header {
+  background: $bgHeader;
+}
+
+.header-mobile {
+  display: none;
+}
+
+
+.filter {
+  @extend %item;
+  grid-template-columns: auto auto;
+  margin-bottom: 2em;
+  visibility: hidden;
+}
+
+.filter-tag {
+  @extend %tag;
+  border-radius: $tagRadius 0 0 $tagRadius;
+  margin-right: 0;
+
+  &:hover + .x {
+    background: black;
+  }
+}
+
+.x {
+  @extend %tag;
+  background-color: $dark;
+  border-radius: 0 $tagRadius $tagRadius 0;
+  color: white;
+  margin-left: 0;
+
+  &:hover {
+    background: black;
+  }
+}
+
+.filter-tags {
+  align-self: center;
+  text-align: left;
+  margin: 0 1em;
+}
+
+.item {
+  @extend %item;
+  grid-template-columns: 6.6em auto 0 auto;
+}
+
+.item-container {
+  .featurebox {
+    border-left: 4px solid $dark;
+  }
+
+  .img {
+    margin: 1em;
+  }
+
+  .info {
+    margin: 1em;
+
+    .name {
+      color: $dark;
+      font-weight: bold;
+    }
+
+    .new {
+      @extend %rounded-button;
+      background: $dark;
+      font-weight: bold;
+    }
+
+    .featured {
+      @extend %rounded-button;
+      background: black;
+      font-weight: bold;
+    }
+
+    .small {
+      color: $gray;
+    }
+  }
+}
+
+.tags {
+  align-self: center;
+  text-align: right;
+  margin: 1em;
+}
+
+.tag {
+  @extend %tag;
+
+  &:hover {
+    background: $dark;
+    color: white;
+  }
+}
+
+
+@media screen and (max-width: 820px) {
+  .container {
+    margin: 0 4%;
+  }
+}
+
+@media screen and (max-width: 625px) {
+
+
+  hr {
+    border: 2px solid $shadow;
+    border-width: 2px 0 0 ;
+    display: block;
+  }
+
+  .header {
+    display:none;
+  }
+  .header-mobile {
+    display: inline-block;
+    background: $bgHeader;
+    max-height: 200px;
+  }
+
+  .item {
+    grid-template-columns: 1fr;
+    margin: 3em 0;
+    position: relative;
+    padding: 1.2em 1em 0.2em;
+
+  }
+
+
+  .img {
+    position: absolute;
+    top: -3.4em;
+
+    img{
+      width: 70px;
+    }
+  }
+
+  .tags {
+    text-align: left;
+  }
+}
